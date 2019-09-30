@@ -22,7 +22,7 @@ const reducer=(state,action)=>{
 export class Provider extends Component {
     state={
         track_list:[],
-        heading:'Top 10 US music from MM Developer',
+        heading:'Top 10 US Music from MM Developer',
         //call dispatch from any comsumer component(search) to manipulate the state
         dispatch:action=>this.setState(state=>reducer(state,action))
     };
