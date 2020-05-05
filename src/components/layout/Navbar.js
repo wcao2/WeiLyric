@@ -1,5 +1,7 @@
 import React from 'react'
+//functional component 
 
+//remember in React, we use className
 const Navbar = () => {
     return (
         <div className="jumbotron jumbotron-fluid bg-info text-white text-center">

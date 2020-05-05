@@ -7,19 +7,22 @@ import Moment from 'react-moment'
 import Spinner from '../layout/Spinner';
 
 class Lyrics extends Component {
+    //use it in component state rather than in application state(context.js)
+    //because I only need the data for this particular component
+    //this is a component level state
     state={
         track:{},
         lyrics:{}
     }   
 
-    //when this component loads, I want to use Axios
+    //when this component loads, I want to use Axios(HTTP request library)
     componentDidMount(){
-        //get id parameter from url
+        //get id parameter from url(address bar)
         axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${this.props.match.params.id}&apikey=${process.env.REACT_APP_MM_KEY}`
         )
         .then(res=>{
-            console.log(res.data);
-            this.setState({lyrics:res.data.message.body.lyrics});
+            //console.log(res.data);
+            this.setState({lyrics:res.data.message.body.lyrics});  
             return axios.get(
                 `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.get?track_id=${this.props.match.params.id}&apikey=${process.env.REACT_APP_MM_KEY}`
             )
@@ -33,9 +36,9 @@ class Lyrics extends Component {
 
     render() {
         const {track,lyrics}=this.state;
-        console.log(track)
+        //console.log(track) u will find {} shows first then get response back
         if(track===undefined||lyrics===undefined||Object.keys(track).length===0||Object.keys(lyrics).length===0){
-            return <Spinner/>
+            return <Spinner/>//return Spinner component
         }else{
             return (
                 <div className="container">
@@ -44,9 +47,10 @@ class Lyrics extends Component {
                             {track.track_name} by <span className="text-secondary">{track.artist_name}</span>
                         </h5>
                         <div className="card-body">
-                            <p className="card-text">{lyrics.lyrics_body}</p>
+                            <p className="card-text">{lyrics.lyrics_body}</p> 
                         </div>
                     </div>
+                    {/* also need a go back button,mb4:margin of bottom */}
                     <Link to="/" className="btn btn-success btn-sm mb-4">Go Back</Link>
 
                     <ul className="list-group mt-3">
@@ -58,12 +62,10 @@ class Lyrics extends Component {
                         </li>
                         <li className="list-group-item">
                             <strong>Release Date</strong>: {' '}
-                                    <Moment format="MM/DD/YYYY">{track.first_release_date}</Moment>
+                            <Moment format="MM/DD/YYYY">{track.first_release_date}</Moment>
                         </li>
                     </ul>
-                </div>
-
-               
+                </div>  
             )
         }        
     }

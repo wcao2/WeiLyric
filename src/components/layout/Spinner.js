@@ -1,3 +1,5 @@
+//functional component
+
 import React from 'react';
 import spinner from './spinner.gif';
 

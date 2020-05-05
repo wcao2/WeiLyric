@@ -12,6 +12,7 @@ import './App.css';
 
 function App() {
   return (
+    //wrap everyting here in the provider 
     <Provider>
       <Router>
         <React.Fragment>
