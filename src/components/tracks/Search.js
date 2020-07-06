@@ -14,7 +14,7 @@ class Search extends Component {
 
     findTrack =(dispatch222,e)=>{
         e.preventDefault();       
-        axios.get(`https://api.musixmatch.com/ws/1.1/track.search?q_track=${this.state.trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MM_KEY}`)
+        axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?q_track=${this.state.trackTitle}&page_size=10&page=1&s_track_rating=desc&apikey=${process.env.REACT_APP_MM_KEY}`)
             .then(res=>
                     {
                         //I need to manipulate the global state,dispatch an action to context

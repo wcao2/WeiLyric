@@ -26,7 +26,7 @@ class Tracks extends Component {
                                 <h3 className="text-center mb-4 text-warning">{heading}</h3>
                                 <div className="row">
                                     {track_list.map(item=>(
-                                        //item has track and _proto_
+                                        //track in here is prop
                                        <Track key={item.track.track_id} track={item.track}/>
                                     ))}
                                 </div>            

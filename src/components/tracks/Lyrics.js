@@ -28,7 +28,7 @@ class Lyrics extends Component {
             )
         })
         .then(res=>{
-            console.log(res.data);
+            //console.log(res.data);
             this.setState({track:res.data.message.body.track});       
         })
         .catch(err=>console.log(err));
