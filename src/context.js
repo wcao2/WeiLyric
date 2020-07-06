@@ -28,7 +28,7 @@ export class Provider extends Component {
     //lifecycle method is available to any react component(class-based), it runs when component mounts 
     componentDidMount(){
         //back ticks here to use template string
-        axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
+        axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=5&country=us&f_has_lyrics=1&apikey=${process.env.REACT_APP_MM_KEY}`)
             .then(res=>
                 {
                     //console.log(res.data);
@@ -40,7 +40,7 @@ export class Provider extends Component {
 
     render() {
         //provider wrapped around every other components
-        //so I can access whatever state I put in this provider
+        //in order to access whatever state I put in this provider
         return (
             //pass the whole state(whatever I want really)
             <Context.Provider value={this.state}>
